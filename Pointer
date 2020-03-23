@@ -1,0 +1,51 @@
+/*
+    unsigned char arr[10]={0xF0,0xF1,0xF2,0xF3,0xF4,0xF5,0xF6,0xF7,0xF8,0xF9};
+	int c=0;
+	float d;
+	char high;
+
+int main(void)
+{
+
+	for (int i=0 ; i<10; i++)
+		c+=arr[i];
+
+	//d = (float)c/10;
+	d = c/10.0;
+
+	if (d<60)
+		high=1;
+		else high=0;
+
+	for(;;);
+}
+
+*/
+
+
+    unsigned char arr[10]={0xF0,0xF1,0xF2,0xF3,0xF4,0xF5,0xF6,0xF7,0xF8,0xF9};
+	unsigned char *arr_pointer;
+
+    int c=0;
+	float d;
+	char high;
+
+int main(void)
+{
+
+	arr_pointer=arr;
+
+	for (int i=0 ; i<10; i++){
+		c+=*arr_pointer;
+		arr_pointer+=1;
+	}
+
+	//d = (float)c/10;
+	d = c/10.0;
+
+	if (d<60)
+		high=1;
+		else high=0;
+
+	for(;;);
+}
