@@ -1,0 +1,44 @@
+unsigned int a;
+unsigned char b1,b2,b3,b4;
+
+int *mem_loc;
+
+int tot=0;
+float avg;
+
+unsigned char high;
+
+int main(void)
+{
+
+int count=0;
+
+mem_loc= (int *) 0x20000040;
+
+*mem_loc=0xF0F1F2F3; mem_loc+=1;
+*mem_loc=0xF4F5F6F7; mem_loc+=1;
+*mem_loc=0xF8F9FAFB; mem_loc+=1;
+*mem_loc=0xFCFDFEFF;
+
+mem_loc= (int *) 0x20000040;
+
+for(count=0;count<4;count++){
+
+a=*mem_loc;
+
+b1=a;
+b2=a>>8;
+b3=a>>16;
+b4=a>>24;
+
+tot+=b1+b2+b3+b4;
+
+mem_loc+=1;
+}
+
+avg= (float) tot/16;
+
+if (avg>60) high=1;else high=0;
+
+	for(;;);
+}
